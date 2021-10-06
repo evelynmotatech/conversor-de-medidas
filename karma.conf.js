@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/conversor-de-medidas'),
+      dir: require('path').join(__dirname, './coverage/conversor-moedas'),
       subdir: '.',
       reporters: [
         { type: 'html' },

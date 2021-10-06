@@ -1,0 +1,30 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <form (ngSubmit)="converter()" *ngIf="unidades" #form="ngForm">
+        <div class="text-white">
+          De:
+          <input class="form-control" ngModel name="input" required #input="ngModel"
+            pattern="^([0-9]*[.])?[0-9]+ (mm|MM|cm|CM|m|M|km|KM)$" placeholder="1 km | 1 m | 1 cm | 1 mm"
+            (keyup)="formatarUnidade(input)" />            
+          <div *ngIf="input.errors" class="error text-danger my-2">
+            <span class="text-warning" *ngIf="input.dirty && input.errors.required">Campo necessário</span>
+            <span *ngIf="input.errors.pattern">Valor inválido</span>
+          </div>
+        </div>
+        <div class="text-white">
+          Para:
+          <select class="form-select" [(ngModel)]="para" name="para">
+            <option *ngFor="let u of unidades;" [ngValue]="u">{{u}}</option>
+          </select>
+        </div>
+        <div class="d-grid gap-2 my-3"><button class="btn btn-outline-primary btn-md" type="submit" value="Converter"
+            [disabled]="!verificacaoSubmit(input)">Converter</button>
+        </div>
+      </form>
+      <div class="text-white h5">Resultado: {{resultado}}</div>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+</div>
