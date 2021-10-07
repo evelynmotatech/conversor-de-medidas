@@ -2,7 +2,9 @@
   <div class="row">
     <div class="col-md-4"></div>
     <div class="col-md-4">
+      
       <form (ngSubmit)="converter()" *ngIf="unidades" #form="ngForm">
+
         <div class="text-white">
           De:
           <input class="form-control" ngModel name="input" required #input="ngModel"
@@ -13,17 +15,21 @@
             <span *ngIf="input.errors.pattern">Valor inválido</span>
           </div>
         </div>
+
         <div class="text-white">
           Para:
           <select class="form-select" [(ngModel)]="para" name="para">
             <option *ngFor="let u of unidades;" [ngValue]="u">{{u}}</option>
           </select>
         </div>
-        <div class="d-grid gap-2 my-3"><button class="btn btn-outline-primary btn-md" type="submit" value="Converter"
-            [disabled]="!verificacaoSubmit(input)">Converter</button>
+
+        <div class="d-grid gap-2 my-3">
+          <button class="btn btn-outline-primary btn-md" type="submit" value="Converter" [disabled]="!verificacaoSubmit(input)">Converter</button>
         </div>
+
       </form>
-      <div class="text-white h5">Resultado: {{resultado}}  {{ para }}</div>
+
+      <div class="text-white h5">Resultado: {{resultado}} {{ para }}</div>
     </div>
     <div class="col-md-4"></div>
   </div>
